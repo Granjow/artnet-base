@@ -40,7 +40,7 @@ Art-Net nodes by default use an IP address in the `2.x.x.x/8` range.
 
 This package was written to control a LED Rail (the Stairville LED Pixel Rail
 40 RGB MKII) over Ethernet from a Raspberry Pi. It was inspired by the
-[artnet][artnet] package, but I needed a reliable version.
+[artnet][artnet] package, but I needed a reliable and fast version.
 
 
 [artnet-npm]: https://www.npmjs.com/package/artnet
