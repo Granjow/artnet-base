@@ -84,6 +84,21 @@ export class ArtnetSender {
         this._socket = socket;
     }
 
+    bind( interfaceAddress: string ): Promise<void> {
+        return new Promise( ( resolve, reject ) => {
+            this._socket.bind( () => {
+                try {
+                    console.log( `Setting multicast interface to ${interfaceAddress}` );
+                    this._socket.setMulticastInterface( interfaceAddress );
+                    console.log( `Done; sending over interface with address ${interfaceAddress}.` );
+                    resolve();
+                } catch ( err ) {
+                    reject( err );
+                }
+            } );
+        } );
+    }
+
 
     send( universe: number, data: number[] ): Promise<number> {
         return new Promise( ( resolve, reject ) => {
