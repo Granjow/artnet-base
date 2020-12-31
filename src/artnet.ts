@@ -1,4 +1,5 @@
 import { createSocket, Socket } from 'dgram';
+import * as net from 'net';
 
 export enum ArtOpCode {
     OpPoll = 0x2000,
@@ -101,7 +102,11 @@ export class ArtnetSender {
 
     close() {
         this._socket.close();
-    };
+    }
+
+    socketAddress(): net.AddressInfo {
+        return this._socket.address();
+    }
 
     private readonly _socket: Socket;
     private readonly _networkInterface;
