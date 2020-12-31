@@ -53,6 +53,7 @@ export class ArtnetDmxPackage extends ArtnetPackage {
 
 export interface ArtnetSenderConfig {
     host: string;
+    debug?: boolean;
     networkInterface: string;
 }
 
@@ -69,6 +70,15 @@ export class ArtnetSender {
         socket.on( 'error', ( err: any ) => {
             console.error( 'Socket error:', err );
         } );
+
+        if ( config.debug === true ) {
+            socket.on( 'connect', () => console.info( 'Socket connected to remote address.' ) );
+            socket.on( 'close', () => console.log( 'Socket closed.' ) );
+            socket.on( 'listening', () => console.log( 'Socket is listening.' ) );
+            socket.on( 'message', ( msg, rinfo ) => {
+                console.log( `New message from ${rinfo.address} (${rinfo.family}), ${rinfo.size} B` )
+            } );
+        }
 
         this._socket = socket;
     }
