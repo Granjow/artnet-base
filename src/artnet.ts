@@ -43,8 +43,8 @@ export class ArtnetDmxPackage extends ArtnetPackage {
         return [
             this.sequence,
             this.physical,
-            this.hi( this.universe ),
-            this.lo( this.universe ),
+            this.lo( this.universe ), // SubUni
+            this.hi( this.universe ), // Net
             this.hi( this.data.length ),
             this.lo( this.data.length ),
         ].concat( this.data );
@@ -128,10 +128,3 @@ export class ArtnetSender {
     private readonly _host;
     private readonly _port = 6454;
 }
-
-const ap = new ArtnetDmxPackage();
-console.log( ap.header );
-ap.data = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
-
-console.dir( ap.body );
-console.dir( ap.package );

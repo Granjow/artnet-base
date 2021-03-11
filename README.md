@@ -43,6 +43,13 @@ This package was written to control a LED Rail (the Stairville LED Pixel Rail
 [artnet][artnet] package, but I needed a reliable and fast version.
 
 
+## Changelog
+
+### v1.1.0 – 2021-03-11
+
+* Fixed universe addressing for universes > 0
+
+
 [artnet-npm]: https://www.npmjs.com/package/artnet
 [v4]: https://artisticlicence.com/WebSiteMaster/User%20Guides/art-net.pdf
 [artnet]: https://art-net.org.uk/
